@@ -5,13 +5,9 @@ import threading
 from datetime import datetime
 import time
 
-#test
-class TestThreading(object):
-    x = datetime.today()
-    y = x.replace(day=x.day+1, hour = 22, minute=50,second=0,microsecond=0)
-    delta_t = y-x
-    secs = delta_t.seconds+1
 
+class TestThreading(object):
+    secs = 5
     def __init__(self, interval=secs):
         self.interval = interval
         thread = threading.Thread(target=self.run, args=())
@@ -21,10 +17,10 @@ class TestThreading(object):
     def run(self):
         while True:
             x = datetime.today()
-            y = x.replace(day=x.day+1, hour = 4, minute=0,second=0,microsecond=0)
+            y = x.replace(day=x.day+1, hour = 14, minute=30,second=0,microsecond=0)
             delta_t = y-x
             self.interval = delta_t.seconds+1
-            print("ran loop")
+            print("ran loop", datetime.now())
             getStats.init()
             alBl = getStats.allBl()
             alGm = getStats.allGm()
